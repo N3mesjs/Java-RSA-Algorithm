@@ -5,11 +5,12 @@ import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Scanner;
 
-
 public class Main {
+
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+
 		String msg = scan.nextLine();
 		RSA_KEYgen(msg);
 
