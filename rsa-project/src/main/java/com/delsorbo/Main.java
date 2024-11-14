@@ -12,12 +12,13 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		String msg = scan.nextLine();
 		RSA_KEYgen(msg);
+
+        scan.close();
 	}
 
 	public static void RSA_KEYgen(String msg){
 		BigInteger p, q, n, v, e, d;
 		Random ran = new Random();
-		//long Byte = 2324234243234L * 2 ;
 		p = BigInteger.probablePrime(Long.BYTES, ran);
 		q = BigInteger.probablePrime(Long.BYTES, ran);
 
