@@ -34,7 +34,7 @@ public class Main {
 
 
 		String encryptedMSG = Encrypt(n, e, msg);
-		System.out.println("Messaggio criptato" + encryptedMSG);
+		System.out.println("Messaggio criptato: " + encryptedMSG);
 
 		String decryptedMsg = Decrypt(n, d, encryptedMSG);
         System.out.println("Messaggio decifrato: " + decryptedMsg);
