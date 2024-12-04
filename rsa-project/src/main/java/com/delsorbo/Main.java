@@ -5,17 +5,21 @@ import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Scanner;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 public class Main {
 
-    private static final Logger LOGGER = LogManager.getLogger();
-    
+    private static final Logger log = LogManager.getLogger(Main.class);
+
+
 	public static void main(String[] args) {
+        Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.INFO);
 		Scanner scan = new Scanner(System.in);
 
-        System.out.print("Inserisci il messaggio che vuoi cryptare");
+        System.out.print("Inserisci il messaggio che vuoi cryptare: ");
 		String msg = scan.nextLine();
 		RSA_KEYgen(msg);
 
@@ -41,10 +45,10 @@ public class Main {
 
 
 		String encryptedMSG = Encrypt(n, e, msg);
-		System.out.println("Messaggio criptato: " + encryptedMSG);
+        log.info("Messaggio criptato con successo: \n" + encryptedMSG);
 
 		String decryptedMsg = Decrypt(n, d, encryptedMSG);
-        System.out.println("Messaggio decifrato: " + decryptedMsg);
+        log.info("Messaggio decifrato con successo: \n" + decryptedMsg);
 
 	}
 
