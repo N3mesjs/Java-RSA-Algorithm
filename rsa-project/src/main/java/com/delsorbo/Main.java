@@ -5,12 +5,17 @@ import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Main {
 
-
+    private static final Logger LOGGER = LogManager.getLogger();
+    
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
+        System.out.print("Inserisci il messaggio che vuoi cryptare");
 		String msg = scan.nextLine();
 		RSA_KEYgen(msg);
 
@@ -19,15 +24,17 @@ public class Main {
 
 	public static void RSA_KEYgen(String msg){
 		BigInteger p, q, n, v, e, d;
+        int bitLenght = 2048;
 		Random ran = new Random();
-		p = BigInteger.probablePrime(Long.BYTES, ran);
-		q = BigInteger.probablePrime(Long.BYTES, ran);
+
+		p = BigInteger.probablePrime(bitLenght, ran);
+		q = BigInteger.probablePrime(bitLenght, ran);
 
 		n = p.multiply(q);
 		v = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 
 		do {
-			e = BigInteger.probablePrime(Long.BYTES, ran);
+			e = BigInteger.probablePrime(bitLenght, ran);
 		} while(!e.gcd(v).equals(BigInteger.ONE));
 
 		d = e.modInverse(v);
